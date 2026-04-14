@@ -1,96 +1,83 @@
-# Warehouse Management System (Java + JDBC)
+# Warehouse Management System
 
-A Warehouse Management System developed in Java using JDBC and MySQL, with both Console and GUI interfaces.
+A simple Java + JDBC + MySQL warehouse management project with:
 
-## Super Simple Run
-From project folder:
+- Login screen
+- Role-based access for Admin and Staff
+- Swing GUI
+- Console mode
+- Product, supplier, inventory, and transaction management
+- Search, low-stock tracking, and CSV export
+- REST API mode
+- Input validation and unit tests
 
-1. Start everything:
-- ./run.sh
+## How to Run on This Mac
 
-2. Login:
-- admin / admin123
-- staff / staff123
+The easiest way is to use the run script from the project folder:
 
-3. Stop everything:
-- ./stop.sh
+```bash
+./run.sh
+```
 
-## Features
-- Login authentication system (username/password)
-- Role-based access control (ADMIN and STAFF)
-- GUI interface using Swing
-- Product CRUD: add, view, update, delete, search
-- Supplier CRUD: add, view, update, delete, search
-- Inventory management
-- Stock IN and OUT transactions
-- Search and filter by name and category
-- Low stock product report
-- Report generation (CSV export)
-- REST API integration (/api/health, /api/products, /api/products/search)
-- Exception handling and input validation
-- Unit testing with JUnit 5
+This script:
 
-## OOP Concepts Demonstrated
-- Classes and objects
-- Constructor usage
-- Encapsulation (private fields with getters/setters)
-- Inheritance (Product extends Item, Supplier extends Person)
-- Polymorphism (method overriding)
-- Method overloading
-- Abstraction (abstract class Item)
-- Collections (ArrayList, HashMap)
+- starts the local MySQL server on port `3307` if needed
+- loads the schema and sample data
+- runs the application in GUI mode
 
-## Project Structure
-- src/main/java/com/wms/model: entity and base classes
-- src/main/java/com/wms/dao: DAO interfaces
-- src/main/java/com/wms/dao/impl: JDBC DAO implementations
-- src/main/java/com/wms/service: business logic
-- src/main/java/com/wms/ui: console and Swing GUI presentation layer
-- src/main/java/com/wms/auth: login/authentication logic
-- src/main/java/com/wms/api: REST API server
-- src/main/java/com/wms/Main.java: entry point
-- src/main/resources/db.properties: DB config
-- sql/schema.sql: schema creation
-- sql/sample_data.sql: seed data
-- docs/class-diagram.md: class diagram source
-- docs/project-report-template.md: report template
+## Login Details
 
-## Prerequisites
+- Admin: `admin / admin123`
+- Staff: `staff / staff123`
+
+## Stop the App
+
+```bash
+./stop.sh
+```
+
+## If Needed
+
+Make sure these are installed:
+
 - Java 17+
-- Maven 3.8+
+- Maven
 - MySQL 8+
 
-## Setup Steps
-1. Create database and tables:
-   - Run sql/schema.sql
-2. Insert sample records:
-   - Run sql/sample_data.sql
-3. Update database credentials:
-   - Edit src/main/resources/db.properties
+If `run.sh` is not executable, run:
 
-## Build and Run
-Build:
-- mvn clean compile
+```bash
+chmod +x run.sh stop.sh
+```
 
-Run GUI mode (default):
-- mvn exec:java
+## Other Run Modes
 
-Run console mode:
-- mvn exec:java -Dexec.args="console"
+Console mode:
 
-Run REST API mode:
-- mvn exec:java -Dexec.args="api"
+```bash
+mvn exec:java -Dexec.args="console"
+```
 
-Run tests:
-- mvn test
+API mode:
 
-Default login users:
-- admin / admin123 (ADMIN)
-- staff / staff123 (STAFF)
+```bash
+mvn exec:java -Dexec.args="api"
+```
 
-## Suggested Submission Package
-- Source code folder
-- SQL scripts (schema and sample data)
-- Project report PDF generated from docs/project-report-template.md
-- Application screenshots
-- Class diagram image generated from docs/class-diagram.md
+## Main Project Files
+
+- `src/main/java/com/wms/Main.java` - application entry point
+- `src/main/java/com/wms/ui/` - GUI and console UI
+- `src/main/java/com/wms/service/` - business logic
+- `src/main/java/com/wms/dao/` - database access layer
+- `src/main/resources/db.properties` - database configuration
+- `sql/schema.sql` - database tables
+- `sql/sample_data.sql` - sample records
+- `run.sh` - setup and run script
+- `stop.sh` - stop script
+
+## Notes for Submission
+
+- The project is already cleaned to remove generated build files.
+- The app is configured to use the local MySQL instance on `127.0.0.1:3307`.
+- If you move the project to another computer, update `src/main/resources/db.properties` and `run.sh` if the MySQL paths are different.
